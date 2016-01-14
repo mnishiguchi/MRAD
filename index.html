@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html
+  lang="en"
+  ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rachid J Mrad</title>
+
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+
+  <!-- CSS Transitions and/or Keyframe Animations -->
+  <link rel="stylesheet" href="animations.css">
+
+</head>
+
+
+<body>
+  <div class="wrapper">
+
+    <div class="custom-navbar" role="navigation">
+
+        <!--
+          Top left navigation
+        -->
+        <div
+          class="customnavbar-header"
+          ng-controller="PortfolioController as portofolio" >
+
+          <a
+            href="#/about"
+            class="about parallelogramRight expander-plus btn btn-default nav-button">
+            <div class="skewAdjuster">
+              <span class="sr-only">Toggle information</span>
+              <span class="hidden-xs">About</span>
+              <div class="glyph-group">
+                <span class="dash"></span>
+                <span class="dash"></span>
+              </div>
+            </div>
+          </a>
+          <a
+            href="#/contact"
+            class="contact parallelogramRight expander-hamburger btn btn-default nav-button">
+            <div class="skewAdjuster">
+              <span class="sr-only">Toggle contact navigation</span>
+              <span class="hidden-xs">Contact</span>
+              <div class="glyph-group">
+                <span class="dash"></span>
+                <span class="dash"></span>
+                <span class="dash"></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!--
+          Top right navigation
+        -->
+        <!-- creating a directive was the only way I found for changing the view
+          and the ng-model for the first scope -->
+        <div class="sort-portfolio">
+          <select
+            ng-model="orderProp"
+            reset-view-onclick >
+
+            <option value="" selected>Show All<sup> *</sup></option>
+            <option value="latest">Latest</option>
+            <option value="websites">Websites</option>
+            <option value="print">Print</option>
+            <option value="traditional">Fine Art</option>
+            <option value="experiments">Experiments</option>
+            <option value="MVC">MVC</option>
+          </select>
+        </div>
+
+        <!-- href resets the view, orderProp resets the order -->
+        <!-- NOTE: has to come after the select, otherwise the ngclick does not work -->
+        <a
+          href="#"
+          class="home parallelogramRight pull-left btn-default active nav-button"
+          ng-click="orderProp=''">
+          <div class="skewAdjuster">
+            <span class="sr-only">home</span>
+
+            <span class="letter">R</span>
+            <span class="letter hidden-xs">a</span>
+            <span class="letter hidden-xs">c</span>
+            <span class="letter hidden-xs">h</span>
+            <span class="letter hidden-xs">i</span>
+            <span class="letter hidden-xs">d</span>
+            <span class="letter">J</span>
+            <span class="letter">M</span>
+            <span class="letter hidden-xs">r</span>
+            <span class="letter hidden-xs">a</span>
+            <span class="letter hidden-xs">d</span>
+          </div>
+        </a>
+    </div><!-- /.custom-navbar -->
+
+
+    <div class="view-container">
+      <ng-view
+        class="view-frame">
+      </ng-view>
+    </div>
+
+
+    <footer>&copy; Copyright Rachid Mrad 2014. All Rights Reserved.</footer>
+
+
+  </div> <!-- /.wrapper   -->
+
+
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-route/angular-route.min.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
