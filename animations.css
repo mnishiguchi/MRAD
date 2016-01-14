@@ -1,5 +1,5 @@
 /*
-  Views 1 and 2
+  Views 1 and 2 ???
 */
 .repeat-animation.ng-enter-stagger,
 .repeat-animation.ng-leave-stagger,
@@ -8,13 +8,13 @@
 .repeat-animation2.ng-leave-stagger,
 .repeat-animation2.ng-move-stagger {
   /* 100ms will be applied between each sucessive enter operation */
-  -moz-transition-delay:0.1s!important;
-  -webkit-transition-delay:0.1s!important;
-  transition-delay:0.1s!important;
+     -moz-transition-delay: 0.1s !important;
+  -webkit-transition-delay: 0.1s !important;
+          transition-delay: 0.1s !important;
 
   /* this is here to avoid accidental CSS inheritance */
-  -webkit-transition-duration:0!important;
-  transition-duration:0!important;
+  -webkit-transition-duration: 0 !important;
+          transition-duration: 0 !important;
 }
 
 .repeat-animation.ng-enter,
@@ -23,9 +23,9 @@
 .repeat-animation2.ng-enter,
 .repeat-animation2.ng-leave,
 .repeat-animation2.ng-move {
-  -moz-transition:0.2s ease-in-out all;
-  -webkit-transition:0.2s ease-in-out all;
-  transition:0.2s ease-in-out all;
+     -moz-transition: 0.2s ease-in-out all;
+  -webkit-transition: 0.2s ease-in-out all;
+          transition: 0.2s ease-in-out all;
 }
 
 .repeat-animation.ng-leave.ng-leave-active,
@@ -34,9 +34,9 @@
 .repeat-animation2.ng-leave.ng-leave-active,
 .repeat-animation2.ng-enter,
 .repeat-animation2.ng-move {
-  -moz-transition:0.2s ease-in-out all;
-  -webkit-transition:0.2s ease-in-out all;
-  transition:0.2s ease-in-out all;
+     -moz-transition: 0.2s ease-in-out all;
+  -webkit-transition: 0.2s ease-in-out all;
+          transition: 0.2s ease-in-out all;
 
   opacity:0;
 }

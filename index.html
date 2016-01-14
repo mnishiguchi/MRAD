@@ -2,7 +2,8 @@
 
 <html
   lang="en"
-  ng-app="app">
+  ng-app="app"
+  ng-controller="AppController as app" >
 
 <head>
   <meta charset="utf-8">
@@ -10,62 +11,106 @@
 
   <title>Rachid J Mrad</title>
 
+  <!-- Load Bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 
   <!-- CSS Transitions and/or Keyframe Animations -->
   <link rel="stylesheet" href="animations.css">
 
+  <!-- Some custom styles -->
+  <style>
+
+    .wrapper {
+      background: #DDDDDD;
+    }
+
+    .customnavbar-header {
+      background: #789ABC;
+      padding: 10px;
+    }
+
+    .view-container {
+      padding: 20px 0;
+      min-height: 300px;
+    }
+
+    footer {
+      margin: 80px 0 0 0;
+      padding: 20px 5px;
+      border-top: 1px solid #333333;
+    }
+
+    footer > p {
+      margin: 0;
+    }
+
+  </style>
+
 </head>
 
 
 <body>
-  <div class="wrapper">
+  <div class="wrapper container">
 
     <div class="custom-navbar" role="navigation">
 
+
         <!--
           Top left navigation
-        -->
-        <div
-          class="customnavbar-header"
-          ng-controller="PortfolioController as portofolio" >
+         -->
+
+
+        <div class="customnavbar-header" >
 
           <a
             href="#/about"
             class="about parallelogramRight expander-plus btn btn-default nav-button">
+
             <div class="skewAdjuster">
+
               <span class="sr-only">Toggle information</span>
+
               <span class="hidden-xs">About</span>
+
+              <!-- The + button, animation is applied onclick -->
               <div class="glyph-group">
                 <span class="dash"></span>
                 <span class="dash"></span>
               </div>
             </div>
+
           </a>
           <a
             href="#/contact"
             class="contact parallelogramRight expander-hamburger btn btn-default nav-button">
+
             <div class="skewAdjuster">
+
               <span class="sr-only">Toggle contact navigation</span>
+
               <span class="hidden-xs">Contact</span>
+
+              <!-- The hamburger button, animation is applied onclick -->
               <div class="glyph-group">
                 <span class="dash"></span>
                 <span class="dash"></span>
                 <span class="dash"></span>
               </div>
             </div>
+
           </a>
         </div>
 
+
         <!--
           Top right navigation
-        -->
-        <!-- creating a directive was the only way I found for changing the view
-          and the ng-model for the first scope -->
-        <div class="sort-portfolio">
-          <select
-            ng-model="orderProp"
-            reset-view-onclick >
+         -->
+
+
+        <!-- TODO: Initialze the view and the ng-model on click. -->
+        <div class="sort-portfolio pull-right">
+
+          <select ng-model="orderProp">
 
             <option value="" selected>Show All<sup> *</sup></option>
             <option value="latest">Latest</option>
@@ -74,18 +119,28 @@
             <option value="traditional">Fine Art</option>
             <option value="experiments">Experiments</option>
             <option value="MVC">MVC</option>
+
           </select>
         </div>
 
+
+        <!--
+          Logo
+         -->
+
+
         <!-- href resets the view, orderProp resets the order -->
-        <!-- NOTE: has to come after the select, otherwise the ngclick does not work -->
+        <!-- has to come after the select, otherwise the ngclick does not work -->
         <a
           href="#"
           class="home parallelogramRight pull-left btn-default active nav-button"
           ng-click="orderProp=''">
+
           <div class="skewAdjuster">
+
             <span class="sr-only">home</span>
 
+            <!-- On mobile phones, only shows initials -->
             <span class="letter">R</span>
             <span class="letter hidden-xs">a</span>
             <span class="letter hidden-xs">c</span>
@@ -99,26 +154,45 @@
             <span class="letter hidden-xs">d</span>
           </div>
         </a>
+
     </div><!-- /.custom-navbar -->
 
 
+    <!--
+      Page content
+     -->
+
+
+    <!-- The partial view corresponding to the current path will be rendered here. -->
     <div class="view-container">
-      <ng-view
-        class="view-frame">
-      </ng-view>
+
+      <ng-view class="view-frame"></ng-view>
+
     </div>
 
 
-    <footer>&copy; Copyright Rachid Mrad 2014. All Rights Reserved.</footer>
+    <!--
+      Footer
+     -->
 
 
-  </div> <!-- /.wrapper   -->
+    <footer class="footer">
+
+      <p>&copy; Copyright Rachid Mrad 2016. All Rights Reserved.</p>
+
+    </footer>
 
 
+  </div><!-- /.wrapper   -->
+
+
+  <!-- Load jQuery -->
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <!-- Load Angular -->
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="node_modules/angular-animate/angular-animate.min.js"></script>
   <script src="node_modules/angular-route/angular-route.min.js"></script>
+  <!-- Load app scripts -->
   <script src="app.js"></script>
 
 </body>
