@@ -13,177 +13,109 @@
 
   <!-- Load Bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-
-  <!-- CSS Transitions and/or Keyframe Animations -->
-  <link rel="stylesheet" href="animations.css">
-
-  <!-- Some custom styles -->
-  <style>
-
-    .wrapper {
-      background: #DDDDDD;
-    }
-
-    .customnavbar-header {
-      background: #789ABC;
-      padding: 10px;
-    }
-
-    .view-container {
-      padding: 20px 0;
-      min-height: 300px;
-    }
-
-    footer {
-      margin: 80px 0 0 0;
-      padding: 20px 5px;
-      border-top: 1px solid #333333;
-    }
-
-    footer > p {
-      margin: 0;
-    }
-
-  </style>
+  <!-- Load custom styles -->
+  <link rel="stylesheet" href="app.css">
 
 </head>
 
 
 <body>
-  <div class="wrapper container">
 
-    <div class="custom-navbar" role="navigation">
+  <nav class="topnavbar" role="navigation">
 
+    <!-- Top left -->
+    <div class="topnavbar__header" >
+      <!-- href resets the view, orderProp resets the order -->
+      <!-- has to come after the select, otherwise the ngclick does not work -->
+      <a
+        href="#"
+        class="home parallelogram btn-default active btn btn-default nav-button"
+        ng-click="app.orderProp=''">
 
-        <!--
-          Top left navigation
-         -->
+        <div class="skew-fix">
 
+          <span class="sr-only">home</span>
 
-        <div class="customnavbar-header" >
-
-          <a
-            href="#/about"
-            class="about parallelogramRight expander-plus btn btn-default nav-button">
-
-            <div class="skewAdjuster">
-
-              <span class="sr-only">Toggle information</span>
-
-              <span class="hidden-xs">About</span>
-
-              <!-- The + button, animation is applied onclick -->
-              <div class="glyph-group">
-                <span class="dash"></span>
-                <span class="dash"></span>
-              </div>
-            </div>
-
-          </a>
-          <a
-            href="#/contact"
-            class="contact parallelogramRight expander-hamburger btn btn-default nav-button">
-
-            <div class="skewAdjuster">
-
-              <span class="sr-only">Toggle contact navigation</span>
-
-              <span class="hidden-xs">Contact</span>
-
-              <!-- The hamburger button, animation is applied onclick -->
-              <div class="glyph-group">
-                <span class="dash"></span>
-                <span class="dash"></span>
-                <span class="dash"></span>
-              </div>
-            </div>
-
-          </a>
+          <!-- On mobile phones, only shows initials -->
+          <span class="letter">R</span>
+          <span class="letter hidden-xs">a</span>
+          <span class="letter hidden-xs">c</span>
+          <span class="letter hidden-xs">h</span>
+          <span class="letter hidden-xs">i</span>
+          <span class="letter hidden-xs">d</span>
+          <span class="letter">J</span>
+          <span class="letter">M</span>
+          <span class="letter hidden-xs">r</span>
+          <span class="letter hidden-xs">a</span>
+          <span class="letter hidden-xs">d</span>
         </div>
+      </a>
+      <a
+        href="#/about"
+        class="about parallelogram expander-plus btn btn-default nav-button">
 
+        <div class="skew-fix">
 
-        <!--
-          Top right navigation
-         -->
+          <span class="sr-only">Toggle information</span>
 
+          <span class="hidden-xs">About</span>
 
-        <!-- TODO: Initialze the view and the ng-model on click. -->
-        <div class="sort-portfolio pull-right">
-
-          <select ng-model="orderProp">
-
-            <option value="" selected>Show All<sup> *</sup></option>
-            <option value="latest">Latest</option>
-            <option value="websites">Websites</option>
-            <option value="print">Print</option>
-            <option value="traditional">Fine Art</option>
-            <option value="experiments">Experiments</option>
-            <option value="MVC">MVC</option>
-
-          </select>
-        </div>
-
-
-        <!--
-          Logo
-         -->
-
-
-        <!-- href resets the view, orderProp resets the order -->
-        <!-- has to come after the select, otherwise the ngclick does not work -->
-        <a
-          href="#"
-          class="home parallelogramRight pull-left btn-default active nav-button"
-          ng-click="orderProp=''">
-
-          <div class="skewAdjuster">
-
-            <span class="sr-only">home</span>
-
-            <!-- On mobile phones, only shows initials -->
-            <span class="letter">R</span>
-            <span class="letter hidden-xs">a</span>
-            <span class="letter hidden-xs">c</span>
-            <span class="letter hidden-xs">h</span>
-            <span class="letter hidden-xs">i</span>
-            <span class="letter hidden-xs">d</span>
-            <span class="letter">J</span>
-            <span class="letter">M</span>
-            <span class="letter hidden-xs">r</span>
-            <span class="letter hidden-xs">a</span>
-            <span class="letter hidden-xs">d</span>
+          <!-- The + button, animation is applied onclick -->
+          <div class="glyph-group">
+            <span class="dash"></span>
+            <span class="dash"></span>
           </div>
-        </a>
+        </div>
+      </a>
+      <a
+        href="#/contact"
+        class="contact parallelogram expander-hamburger btn btn-default nav-button">
 
-    </div><!-- /.custom-navbar -->
+        <div class="skew-fix">
 
+          <span class="sr-only">Toggle contact navigation</span>
 
-    <!--
-      Page content
-     -->
+          <span class="hidden-xs">Contact</span>
 
-
-    <!-- The partial view corresponding to the current path will be rendered here. -->
-    <div class="view-container">
-
-      <ng-view class="view-frame"></ng-view>
-
+          <!-- The hamburger button, animation is applied onclick -->
+          <div class="glyph-group">
+            <span class="dash"></span>
+            <span class="dash"></span>
+            <span class="dash"></span>
+          </div>
+        </div>
+      </a>
     </div>
 
+    <!-- Top right -->
+    <div class="sort-portfolio pull-right">
 
-    <!--
-      Footer
-     -->
+      <select ng-model="orderProp">
 
+        <option value="" selected>Show All<sup> *</sup></option>
+        <option value="latest">Latest</option>
+        <option value="websites">Websites</option>
+        <option value="print">Print</option>
+        <option value="traditional">Fine Art</option>
+        <option value="experiments">Experiments</option>
+        <option value="MVC">MVC</option>
+
+      </select>
+    </div>
+
+  </nav><!-- /.top-navbar -->
+
+
+  <div class="container page">
+
+    <!-- The partial view corresponding to the current path will be rendered here. -->
+    <ng-view></ng-view>
 
     <footer class="footer">
-
       <p>&copy; Copyright Rachid Mrad 2016. All Rights Reserved.</p>
-
     </footer>
 
-
-  </div><!-- /.wrapper   -->
+  </div>
 
 
   <!-- Load jQuery -->

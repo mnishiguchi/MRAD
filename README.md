@@ -10,5 +10,28 @@
 - How the Hexagon shapes are re-organized when the screen size changes?
 - [ngAnimate](https://docs.angularjs.org/api/ngAnimate)
 
-## Copyright
-Copyright Rachid Mrad 2014. All Rights Reserved.
+==
+
+## Parallelogram
+- [The Shapes of CSS | CSS-Tricks](https://css-tricks.com/examples/ShapesOfCSS/)
+- http://codepen.io/brownerd/pen/vwfJA
+
+```
+/*
+  Parallelogram shape
+  http://codepen.io/brownerd/pen/vwfJA
+*/
+
+.parallelogram {
+  -webkit-transform: skew(20deg);
+     -moz-transform: skew(20deg);
+       -o-transform: skew(20deg);
+}
+
+.skew-fix{
+  display: inline-block;
+  transform: skew(-20deg);
+}
+```
+
+

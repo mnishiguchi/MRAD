@@ -1,6 +1,55 @@
 /*
-  Views 1 and 2 ???
+  App-wide basic styles
+ */
+
+.wrapper {
+  background: #DDDDDD;
+}
+
+.topnavbar__header {
+  background: #789ABC;
+  padding: 10px;
+}
+
+.view-container {
+  padding: 20px 0;
+  min-height: 300px;
+}
+
+footer {
+  margin: 80px 0 0 0;
+  padding: 20px 5px;
+  border-top: 1px solid #333333;
+}
+
+footer > p {
+  margin: 0;
+}
+
+
+/*
+  Parallelogram shape
+  http://codepen.io/brownerd/pen/vwfJA
 */
+
+
+.parallelogram {
+  -webkit-transform: skew(20deg);
+     -moz-transform: skew(20deg);
+       -o-transform: skew(20deg);
+}
+
+.skew-fix{
+  display: inline-block;
+  transform: skew(-20deg);
+}
+
+
+/*
+  CSS Transitions and/or Keyframe Animations
+*/
+
+
 .repeat-animation.ng-enter-stagger,
 .repeat-animation.ng-leave-stagger,
 .repeat-animation.ng-move-stagger,
