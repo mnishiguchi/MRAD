@@ -11,33 +11,31 @@
 
   <title>Masatoshi Nishiguchi</title>
 
+  <!-- Load Google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet' type='text/css'>
   <!-- Load Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Load Bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <!-- Load custom styles -->
   <link rel="stylesheet" href="app.css">
-
+  <link rel="stylesheet" href="hexagon.css">
 </head>
 
 
 <body>
-  <div class="wrapper">
+  <top-navbar></top-navbar>
 
-    <top-navbar></top-navbar>
+  <div class="container page">
 
-    <div class="view-container">
+    <!-- The partial view corresponding to the current path will be rendered here. -->
+    <ng-view></ng-view>
 
-      <!-- The partial view corresponding to the current path will be rendered here. -->
-      <ng-view></ng-view>
+    <footer>
+      <p>&copy; Copyright Masatoshi Nisihguchi 2016. All Rights Reserved.</p>
+    </footer>
 
-      <footer class="footer text-center">
-        <p>&copy; Copyright Masatoshi Nisihguchi 2016. All Rights Reserved.</p>
-      </footer>
-
-    </div>
-
-  </div><!-- /.wrapper -->
+  </div><!-- /.container -->
 
 
   <!-- Load jQuery -->

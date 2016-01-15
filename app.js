@@ -1,11 +1,10 @@
 'use strict';
 
-/**
- * Angular code.
- */
 (function() {
 
-  // Declare the app module.
+  /**
+   * Declares the app module.
+   */
   angular
     .module( 'app', [
       'ngRoute',
@@ -34,11 +33,12 @@
 
 
   /**
-   * Defines the routes.
+   * Configuration.
    */
   angular
     .module('app' )
-    .config( config );
+    .config( config )
+    .run( run );
 
     config.$inject = [
       "$routeProvider"
@@ -47,7 +47,7 @@
     function config( $routeProvider ) {
 
       $routeProvider
-        .when('/portfolio', {
+        .when('/', {
           templateUrl: 'partials/_portfolio.html',
           controller: 'PortfolioController as portfolio'
         })
@@ -61,13 +61,21 @@
         })
         .when('/contact', {
           templateUrl: 'partials/_contact.html',
-          controller: function() {}
+          controller: "ContactController as contact"
         })
         .otherwise({
-          redirectTo: '/portfolio'
+          redirectTo: '/'
         });
 
     } // end config
+
+
+    run.$inject = [
+      "$rootScope"
+    ];
+
+    function run( $rootScope ) {
+    } // end run
 
 
   // -------------------------------------------- //
@@ -193,5 +201,82 @@
       } // end getWork
 
     } // end ProjectController
+
+
+  // -------------------------------------------- //
+  // -------------------------------------------- //
+
+
+  /**
+   * Controls the contact page.
+   */
+  angular
+    .module( 'app' )
+    .controller( 'ContactController', ContactController );
+
+    ContactController.$inject = [
+      '$routeParams',
+      '$http'
+    ];
+
+    function ContactController() {
+
+      var vm = this;
+
+      // Initial state.
+      vm.message = "";
+
+      // Expose the public methods.
+      vm.sendEmail = sendEmail;
+      vm.clearMsg  = clearMsg;
+
+
+      /**
+       * Opens the default email program with title, address and message prefilled.
+       */
+      function sendEmail() {
+
+        window.location.href = "mailto:nishiguchi.masa@gmail.com"
+          + "?cc=masatoshi.nishiguchi@udc.edu"
+          + "&subject=" + escape("Hello, Masa!")
+          + "&body=" + vm.message
+        ; // end window.location.href
+
+      }
+
+
+      /**
+       * Clear the text in the textarea.
+       */
+      function clearMsg() {
+        vm.message = "";
+      }
+
+    } // end ContactController
+
+
+  // -------------------------------------------- //
+  // -------------------------------------------- //
+
+
+  angular
+    .module( 'app' )
+    .factory( 'ViewHelper', ViewHelper );
+
+    ViewHelper.$inject = [
+      "$location"
+    ];
+
+    function ViewHelper( $location ) {
+
+      var service = {
+
+        linkTo: function( path ) { $location.path( path ); }
+
+      };
+
+      return service;
+
+    }
 
 })(); // end module

@@ -1,79 +1,100 @@
-<nav class="topnavbar" role="navigation">
+<nav class="top_navbar" role="navigation">
 
-  <!-- Left -->
-  <div class="topnavbar__header" >
+  <div class="top_navbar buttons" >
+    <!-- Left-hand side -->
     <!-- href resets the view, orderProp resets the order -->
     <!-- has to come after the select, otherwise the ngclick does not work -->
-    <a
-      href="#"
-      class="home parallelogram btn-default active btn btn-default nav-button">
+    <!-- active by default -->
+    <button
+      class="home parallelogram active nav_button"
+      ng-click="topNavbar.linkTo('/')">
 
-      <div class="skew-fix">
+      <div class="skew_fix">
 
-        <span class="sr-only">home</span>
+        <span class="sr-only">Home button</span>
 
         <!-- On mobile phones, only shows initials -->
         <span class="letter">M</span>
-        <span class="letter hidden-xs">a</span>
-        <span class="letter hidden-xs">s</span>
-        <span class="letter hidden-xs">a</span>
-        <span class="letter hidden-xs">t</span>
-        <span class="letter hidden-xs">o</span>
-        <span class="letter hidden-xs">s</span>
-        <span class="letter hidden-xs">h</span>
-        <span class="letter hidden-xs">i</span>
+        <span class="letter hidden-sm-down">a</span>
+        <span class="letter hidden-sm-down">s</span>
+        <span class="letter hidden-sm-down">a</span>
+        <span class="letter hidden-sm-down">t</span>
+        <span class="letter hidden-sm-down">o</span>
+        <span class="letter hidden-sm-down">s</span>
+        <span class="letter hidden-sm-down">h</span>
+        <span class="letter hidden-sm-down">i</span>
+        &nbsp;
         <span class="letter">N</span>
-        <span class="letter hidden-xs">i</span>
-        <span class="letter hidden-xs">s</span>
-        <span class="letter hidden-xs">h</span>
-        <span class="letter hidden-xs">i</span>
-        <span class="letter hidden-xs">g</span>
-        <span class="letter hidden-xs">u</span>
-        <span class="letter hidden-xs">c</span>
-        <span class="letter hidden-xs">h</span>
-        <span class="letter hidden-xs">i</span>
+        <span class="letter hidden-sm-down">i</span>
+        <span class="letter hidden-sm-down">s</span>
+        <span class="letter hidden-sm-down">h</span>
+        <span class="letter hidden-sm-down">i</span>
+        <span class="letter hidden-sm-down">g</span>
+        <span class="letter hidden-sm-down">u</span>
+        <span class="letter hidden-sm-down">c</span>
+        <span class="letter hidden-sm-down">h</span>
+        <span class="letter hidden-sm-down">i</span>
       </div>
-    </a>
-    <a
-      href="#/about"
-      class="about parallelogram expander-plus btn btn-default nav-button">
+    </button>
+    <button
+      class="about parallelogram nav_button"
+      ng-click="topNavbar.linkTo('/about')">
 
-      <div class="skew-fix">
+      <div class="skew_fix">
 
-        <span class="sr-only">Toggle information</span>
+        <span class="sr-only">Information button</span>
 
-        <span class="hidden-xs">About</span>
+        <span class="hidden-xs-down">About</span>
         <i class="fa fa-info-circle"></i>
       </div>
-    </a>
-    <a
-      href="#/contact"
-      class="contact parallelogram expander-hamburger btn btn-default nav-button">
 
-      <div class="skew-fix">
+    </button>
+    <button
+      class="contact parallelogram nav_button"
+      ng-click="topNavbar.linkTo('/contact')">
 
-        <span class="sr-only">Toggle contact navigation</span>
+      <div class="skew_fix">
 
-        <span class="hidden-xs">Contact</span>
+        <span class="sr-only">Contact button</span>
+
+        <span class="hidden-xs-down">Contact</span>
         <i class="fa fa-envelope"></i>
       </div>
-    </a>
+
+    </button>
+
+    <!-- Right-hand side -->
+    <button
+      class="sort parallelogram nav_button pull-right"
+      ng-click="topNavbar.isSortingListShown = ! topNavbar.isSortingListShown">
+
+      <div class="skew_fix">
+
+        <span class="sr-only">Toggle button for sorting options</span>
+
+        <span class="hidden-xs-down">Sorting</span>
+        <i class="fa fa-bars"></i>
+      </div>
+
+    </button>
+
   </div>
 
-  <!-- Right -->
-  <div class="sort-portfolio pull-right">
+  <!-- Portfolio sorting options -->
+  <div
+    class="sort_portfolio pull-right"
+    ng-show="topNavbar.isSortingListShown">
 
-    <select ng-model="orderProp">
+    <select ng-model="orderProp" >
 
       <option value="" selected>Show All<sup> *</sup></option>
       <option value="latest">Latest</option>
       <option value="websites">Websites</option>
-      <option value="print">Print</option>
-      <option value="traditional">Fine Art</option>
+      <option value="mobileApps">Mobile apps</option>
       <option value="experiments">Experiments</option>
-      <option value="MVC">MVC</option>
 
     </select>
+
   </div>
 
 </nav><!-- /.top-navbar -->
