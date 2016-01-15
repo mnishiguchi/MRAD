@@ -1,39 +1,5 @@
 'use strict';
 
-
-/**
- * jQuery code
- * Allows nav-buttons to respond to mouseclicks.
- */
-$( document  ).ready( function () {
-
-  $( '.contact' ).click( function () {
-    $( '.nav-button' ).removeClass( 'active' );
-    $( '.contact').addClass( 'active' );
-  });
-
-  $( '.about' ).click( function () {
-    $( '.nav-button' ).removeClass( 'active' );
-    $( '.about').addClass( 'active' );
-  });
-
-  $( '.home' ).click( function () {
-    $( '.nav-button' ).removeClass( 'active' );
-    $( '.home').addClass( 'active' );
-  });
-
-  $( '.sort-portfolio' ).click( function () {
-    $( '.nav-button' ).removeClass( 'active' );
-    $( '.home').addClass( 'active' );
-  });
-
-});
-
-
-// ---------------------------------------------- //
-// ---------------------------------------------- //
-
-
 /**
  * Angular code.
  */
@@ -140,12 +106,6 @@ $( document  ).ready( function () {
        */
       function getPortfolioData() {
 
-        // $http
-        //   .get( 'data/portfolio.json' )
-        //   .success( function( data ) {
-        //     vm.portfolio = data;
-        //   });
-
         // Return a stub list.
         return [
           {
@@ -201,13 +161,6 @@ $( document  ).ready( function () {
        */
       function getWork() {
 
-        // $http
-        //   .get( 'data/' + $routeParams.workId + '.json' )
-        //   .success( function( data ) {
-        //     vm.work = data;
-        //   });
-        // }
-
         // A stub list of the item lists.
         var workLists = [
           // [0]
@@ -240,71 +193,5 @@ $( document  ).ready( function () {
       } // end getWork
 
     } // end ProjectController
-
-
-  // -------------------------------------------- //
-  // -------------------------------------------- //
-
-
-  /**
-   * Defines the app version.
-   */
-  angular
-    .module( 'app' )
-    .value( 'version', '0.1' );
-
-
-  // -------------------------------------------- //
-  // -------------------------------------------- //
-
-
-  /**
-   * Interpolates the app version number into the passed-in string.
-   * Insertion points must be specified by the word "%VERSION%".
-   */
-  angular
-    .module( 'app' )
-    .filter( 'interpolateAppVersion', interpolateAppVersion );
-
-    interpolateAppVersion.$inject = [
-      'version'
-    ];
-
-    function interpolateAppVersion( version ) {
-
-      var filter = function( text ) {
-
-        // g: global match
-        // m: match over multiple lines
-        return String( text  ).replace( /\%VERSION\%/mg, version );
-      }
-
-      return filter;
-    }
-
-
-  // -------------------------------------------- //
-  // -------------------------------------------- //
-
-
-  /**
-   * appVersion
-   * Set the app version text on the element.
-   */
-  angular
-    .module( 'app' )
-    .directive( 'appVersion', appVersion );
-
-    appVersion.$inject = [
-      'version'
-    ];
-
-    function appVersion( version ) {
-      return link;
-    }
-
-    function link( scope, elm, attrs ) {
-      elm.text( version );
-    }
 
 })(); // end module

@@ -26,6 +26,10 @@ footer > p {
   margin: 0;
 }
 
+nav .active {
+  color: red;
+}
+
 
 /*
   Parallelogram shape

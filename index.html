@@ -9,8 +9,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Rachid J Mrad</title>
+  <title>Masatoshi Nishiguchi</title>
 
+  <!-- Load Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Load Bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <!-- Load custom styles -->
@@ -20,102 +22,22 @@
 
 
 <body>
+  <div class="wrapper">
 
-  <nav class="topnavbar" role="navigation">
+    <top-navbar></top-navbar>
 
-    <!-- Top left -->
-    <div class="topnavbar__header" >
-      <!-- href resets the view, orderProp resets the order -->
-      <!-- has to come after the select, otherwise the ngclick does not work -->
-      <a
-        href="#"
-        class="home parallelogram btn-default active btn btn-default nav-button"
-        ng-click="app.orderProp=''">
+    <div class="view-container">
 
-        <div class="skew-fix">
+      <!-- The partial view corresponding to the current path will be rendered here. -->
+      <ng-view></ng-view>
 
-          <span class="sr-only">home</span>
+      <footer class="footer text-center">
+        <p>&copy; Copyright Masatoshi Nisihguchi 2016. All Rights Reserved.</p>
+      </footer>
 
-          <!-- On mobile phones, only shows initials -->
-          <span class="letter">R</span>
-          <span class="letter hidden-xs">a</span>
-          <span class="letter hidden-xs">c</span>
-          <span class="letter hidden-xs">h</span>
-          <span class="letter hidden-xs">i</span>
-          <span class="letter hidden-xs">d</span>
-          <span class="letter">J</span>
-          <span class="letter">M</span>
-          <span class="letter hidden-xs">r</span>
-          <span class="letter hidden-xs">a</span>
-          <span class="letter hidden-xs">d</span>
-        </div>
-      </a>
-      <a
-        href="#/about"
-        class="about parallelogram expander-plus btn btn-default nav-button">
-
-        <div class="skew-fix">
-
-          <span class="sr-only">Toggle information</span>
-
-          <span class="hidden-xs">About</span>
-
-          <!-- The + button, animation is applied onclick -->
-          <div class="glyph-group">
-            <span class="dash"></span>
-            <span class="dash"></span>
-          </div>
-        </div>
-      </a>
-      <a
-        href="#/contact"
-        class="contact parallelogram expander-hamburger btn btn-default nav-button">
-
-        <div class="skew-fix">
-
-          <span class="sr-only">Toggle contact navigation</span>
-
-          <span class="hidden-xs">Contact</span>
-
-          <!-- The hamburger button, animation is applied onclick -->
-          <div class="glyph-group">
-            <span class="dash"></span>
-            <span class="dash"></span>
-            <span class="dash"></span>
-          </div>
-        </div>
-      </a>
     </div>
 
-    <!-- Top right -->
-    <div class="sort-portfolio pull-right">
-
-      <select ng-model="orderProp">
-
-        <option value="" selected>Show All<sup> *</sup></option>
-        <option value="latest">Latest</option>
-        <option value="websites">Websites</option>
-        <option value="print">Print</option>
-        <option value="traditional">Fine Art</option>
-        <option value="experiments">Experiments</option>
-        <option value="MVC">MVC</option>
-
-      </select>
-    </div>
-
-  </nav><!-- /.top-navbar -->
-
-
-  <div class="container page">
-
-    <!-- The partial view corresponding to the current path will be rendered here. -->
-    <ng-view></ng-view>
-
-    <footer class="footer">
-      <p>&copy; Copyright Rachid Mrad 2016. All Rights Reserved.</p>
-    </footer>
-
-  </div>
+  </div><!-- /.wrapper -->
 
 
   <!-- Load jQuery -->
@@ -126,6 +48,6 @@
   <script src="node_modules/angular-route/angular-route.min.js"></script>
   <!-- Load app scripts -->
   <script src="app.js"></script>
-
+  <script src="components/topNavbar.js"></script>
 </body>
 </html>
