@@ -71,10 +71,17 @@
 
 
     run.$inject = [
-      "$rootScope"
+      "$rootScope",
+      '$location',
+      '$routeParams'
     ];
 
-    function run( $rootScope ) {
+    function run( $rootScope, $location, $routeParams ) {
+
+      // $rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
+      //   console.log('Current route name: ' + $location.path());
+      // });
+
     } // end run
 
 
@@ -98,10 +105,10 @@
       var vm = this;
 
       // Initial state.
-      vm.portfolio = [];
+      vm.items = [];
 
       // Load the portfolio data into vm.
-      vm.portfolio = getPortfolioData();
+      vm.items = getPortfolioData();
 
 
       // ---
@@ -110,25 +117,20 @@
 
 
       /**
-       * Fetch the data for the entire work and store it into vm.portfolio.
+       * Fetches the data for the entire work and store it into vm.portfolio.
        */
       function getPortfolioData() {
 
-        // Return a stub list.
-        return [
-          {
-            name: "item_1",
-            desc: "desc_1"
-          },
-          {
-            name: "item_2",
-            desc: "desc_2"
-          },
-          {
-            name: "item_3",
-            desc: "desc_3"
-          }
-        ];
+        var stubList = [];
+
+        for ( var i = 0; i < 10; i++ ) {
+          stubList.push({
+            name: "item_" + i,
+            desc: "desc_" + i,
+          });
+        }
+
+        return stubList;
 
       } // end getPortfolioData
 
@@ -225,6 +227,23 @@
 
       // Initial state.
       vm.message = "";
+      vm.items = [
+        {
+          name: "github",
+          url: "https://github.com/mnishiguchi",
+          icon: "img/ic-github-256.png"
+        },
+        {
+          name: "linkedin",
+          url: "https://www.linkedin.com/in/mnishiguchi",
+          icon: "img/ic-linkedin-256.png"
+        },
+        {
+          name: "twitter",
+          url: "https://twitter.com/mnishiguchidc",
+          icon: "img/ic-twitter-256.png"
+        },
+      ]
 
       // Expose the public methods.
       vm.sendEmail = sendEmail;
@@ -238,7 +257,7 @@
 
         window.location.href = "mailto:nishiguchi.masa@gmail.com"
           + "?cc=masatoshi.nishiguchi@udc.edu"
-          + "&subject=" + escape("Hello, Masa!")
+          + "&subject=" + escape( "Hello, Masa!" )
           + "&body=" + vm.message
         ; // end window.location.href
 
@@ -271,7 +290,7 @@
 
       var service = {
 
-        linkTo: function( path ) { $location.path( path ); }
+        goToLink: function( path ) { $location.path( path ); }
 
       };
 

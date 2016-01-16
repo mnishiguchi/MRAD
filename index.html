@@ -18,8 +18,9 @@
   <!-- Load Bootstrap -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <!-- Load custom styles -->
-  <link rel="stylesheet" href="app.css">
-  <link rel="stylesheet" href="hexagon.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/hexagon.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 
 
@@ -32,14 +33,21 @@
     <ng-view></ng-view>
 
     <footer>
-      <p>&copy; Copyright Masatoshi Nisihguchi 2016. All Rights Reserved.</p>
+      <p>
+        <small>
+          &copy; Copyright Masatoshi Nisihguchi 2016. All Rights Reserved.
+          <br />
+          This website is an imitation of <a href="http://www.rachidmrad.com">Mr. Mrad's beautiful portfolio</a>,
+          built with AngularJS, Bootstrap and other open source projects.
+        </small>
+      </p>
     </footer>
 
   </div><!-- /.container -->
 
 
   <!-- Load jQuery -->
-  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <!-- Load Angular -->
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="node_modules/angular-animate/angular-animate.min.js"></script>

@@ -1,5 +1,16 @@
 <div class="contact">
-  <section>
+
+  <section class="container hex_icons">
+    <ul id="hexGrid">
+      <li class="hex" ng-repeat="each in contact.items">
+        <a class="hexIn" ng-href='{{ each.url }}'>
+          <img ng-src="{{ each.icon }}" alt="" />
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="message">
     <textarea
       ng-model="contact.message"
       placeholder="your message"
@@ -22,4 +33,5 @@
       </button>
     </div>
   </section>
+
 </div>

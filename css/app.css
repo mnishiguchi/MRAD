@@ -1,0 +1,116 @@
+/*
+  App-wide basic styles
+ */
+
+body {
+  color: #FFFFFF;
+  background: #444444;
+}
+
+footer {
+  margin: 80px 0 0 0;
+  padding: 20px 5px;
+  border-top: 1px solid #333333;
+}
+
+footer > p {
+  text-align: center;
+}
+
+/* Removes default blue border */
+button:focus { outline: 0; }
+
+
+/*
+  Navbar
+ */
+
+
+.top_navbar {
+  /* Prevents from the x-axis scroll caused by rh side of the sorting button. */
+  overflow: hidden;
+
+  /* Fixes the navbar at the top using Bootstrap's navbar-fixed class */
+  margin-top: 10px;
+}
+
+.nav_button {
+  height: 50px;
+  line-height: 1px;
+  vertical-align: text-bottom;  /* Keeps all the buttons aligned */
+  background: #000000;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+}
+
+.nav_button.active {
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.nav_button:hover {
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.nav_button.home {
+  padding: 10px 25px 10px 111px;
+  margin-left: -100px;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.nav_button.about,
+.nav_button.contact {
+  padding: 10px 15px;
+}
+
+.nav_button.sort {
+  padding: 10px 111px 10px 25px;
+  margin-right: -100px;
+  color: #000000;
+  background: #FFFFFF;
+  border-color: #000000;
+}
+
+
+/*
+  Parallelogram shape
+  http://codepen.io/brownerd/pen/vwfJA
+*/
+
+
+.parallelogram {
+  -webkit-transform: skew(-30deg);
+     -moz-transform: skew(-30deg);
+       -o-transform: skew(-30deg);
+}
+
+.skew_fix{
+  display: inline-block;
+  transform: skew(30deg);
+}
+
+
+/*
+  Pages
+ */
+
+
+.page {
+  margin-top: 120px;
+}
+
+.page header>h1 {
+  font-family: 'Allura', cursive;
+  padding-bottom: 10px;
+}
+
+.page .contact section.message {
+  width: 400px;
+  display: block;
+  margin: 20px auto 0 auto;
+  overflow: auto;
+}
