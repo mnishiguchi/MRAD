@@ -2,59 +2,109 @@
   App-wide basic styles
  */
 
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background: #404142;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  padding-top: 120px;
+  padding-bottom: 300px;
   color: #FFFFFF;
-  background: #444444;
 }
 
-footer {
-  margin: 80px 0 0 0;
-  padding: 20px 5px;
-  border-top: 1px solid #333333;
+.page h1 {
+  font-family: 'Allura', cursive;
+  padding-bottom: 10px;
 }
 
-footer > p {
-  text-align: center;
+.page h2 {
+  font-weight: 700;
+}
+
+.btn {
+  border-radius: 0;
+  font-size: 16px;
+  padding: 8px 12px;
+
+  /* Smooth hover effect */
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
 }
 
 /* Removes default blue border */
-button:focus { outline: 0; }
+.btn:focus, .btn:active:focus, .btn.active:focus,
+.btn.focus, .btn:active.focus, .btn.active.focus {
+  outline: none;
+}
+
+/* Stays right at the bottom even if content's height is short. */
+footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #ABABAB;
+}
 
 
 /*
-  Navbar
+  topNavbar
  */
 
-
 .top_navbar {
-  /* Prevents from the x-axis scroll caused by rh side of the sorting button. */
-  overflow: hidden;
-
-  /* Fixes the navbar at the top using Bootstrap's navbar-fixed class */
-  margin-top: 10px;
+  display: inline;
+}
+.top_navbar .buttons_left {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 7px;
+  z-index: 9;  /* ??? */
 }
 
 .nav_button {
-  height: 50px;
-  line-height: 1px;
-  vertical-align: text-bottom;  /* Keeps all the buttons aligned */
   background: #000000;
   color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  vertical-align: middle;  /* Keeps all the buttons aligned */
+  height: 40px;
+  border: 1px solid #ABABAB;
 }
-
+.nav_button:hover,
+.nav_button:focus {
+  outline: 0;
+  background: #FFFFFF;
+  color: #000000;
+  text-decoration: none;
+}
+.nav_button:active,
 .nav_button.active {
-  color: #000000;
+  outline: 0;
   background: #FFFFFF;
-}
-
-.nav_button:hover {
   color: #000000;
-  background: #FFFFFF;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
 .nav_button.home {
-  padding: 10px 25px 10px 111px;
+  padding: 0 25px 0 111px;
   margin-left: -100px;
   text-transform: uppercase;
   font-size: 1.2em;
@@ -64,11 +114,11 @@ button:focus { outline: 0; }
 
 .nav_button.about,
 .nav_button.contact {
-  padding: 10px 15px;
+  padding: 0 15px;
 }
 
 .nav_button.sort {
-  padding: 10px 111px 10px 25px;
+  padding: 0 111px 0 25px;
   margin-right: -100px;
   color: #000000;
   background: #FFFFFF;
@@ -95,22 +145,9 @@ button:focus { outline: 0; }
 
 
 /*
-  Pages
+  Page contents
  */
 
-
-.page {
-  margin-top: 120px;
-}
-
-.page header>h1 {
-  font-family: 'Allura', cursive;
-  padding-bottom: 10px;
-}
-
-.page .contact section.message {
-  width: 400px;
-  display: block;
-  margin: 20px auto 0 auto;
-  overflow: auto;
+.page .contact .message {
+  margin-top: 20px;
 }

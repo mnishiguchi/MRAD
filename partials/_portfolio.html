@@ -1,18 +1,24 @@
 <div class="portfolio">
 
-  <ul id="hexGrid">
-    <li
-      class="hex"
-      ng-repeat="each in portfolio.items track by $index">
-      <a
-        class="hexIn"
-        ng-href='{{ "#/project/" + $index }}'>
-        <img src="https://avatars1.githubusercontent.com/u/7563926?v=3&s=460" alt="" />
-        <h1>{{ each.name }}</h1>
-        <p>{{ each.desc }}</p>
-      </a>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+
+      <ul id="hexGrid">
+        <li
+          class="hex"
+          ng-repeat="each in portfolio.items track by $index">
+          <a
+            class="hexIn"
+            ng-href='{{ "#/project/" + $index }}'>
+            <img src="https://avatars1.githubusercontent.com/u/7563926?v=3&s=460" alt="" />
+            <h4>{{ each.name }}</h4>
+            <p>{{ each.desc }}</p>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
 
 </div>
 

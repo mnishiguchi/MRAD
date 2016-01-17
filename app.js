@@ -290,7 +290,7 @@
 
       var service = {
 
-        goToLink: function( path ) { $location.path( path ); }
+        goToPath: function( path ) { $location.path( path ); }
 
       };
 

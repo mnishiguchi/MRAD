@@ -1,12 +1,12 @@
 <nav class="top_navbar navbar-fixed-top" role="navigation">
 
-  <div class="top_navbar buttons" >
+  <div class="buttons_left" >
     <!-- Left-hand side -->
     <!-- href resets the view, orderProp resets the order -->
     <!-- has to come after the select, otherwise the ngclick does not work -->
     <!-- active by default -->
     <button
-      class="home parallelogram nav_button"
+      class="home parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'home' )"
       ng-class="{ active: topNavbar.isActive( 'home' ) }">
 
@@ -38,7 +38,7 @@
       </div>
     </button>
     <button
-      class="about parallelogram nav_button"
+      class="about parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'about' )"
       ng-class="{ active: topNavbar.isActive( 'about' ) }">
 
@@ -52,7 +52,7 @@
 
     </button>
     <button
-      class="contact parallelogram nav_button"
+      class="contact parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'contact' )"
       ng-class="{ active: topNavbar.isActive( 'contact' ) }">
 
@@ -68,14 +68,14 @@
 
     <!-- Right-hand side -->
     <button
-      class="sort parallelogram nav_button pull-right"
+      class="sort parallelogram nav_button btn pull-right"
       ng-click="topNavbar.toggleSorter()">
 
       <div class="skew_fix">
 
         <span class="sr-only">Toggle button for sorting options</span>
 
-        <span class="hidden-xs-down">Sorting</span>
+        <span class="hidden-xs-down"></span>
         <i class="fa fa-bars"></i>
       </div>
 

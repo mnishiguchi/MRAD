@@ -1,37 +1,41 @@
-<div class="contact">
+<div class="contact container">
 
-  <section class="container hex_icons">
-    <ul id="hexGrid">
-      <li class="hex" ng-repeat="each in contact.items">
-        <a class="hexIn" ng-href='{{ each.url }}'>
-          <img ng-src="{{ each.icon }}" alt="" />
-        </a>
-      </li>
-    </ul>
-  </section>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
 
-  <section class="message">
-    <textarea
-      ng-model="contact.message"
-      placeholder="your message"
-      class="form-control">
-    </textarea>
+      <ul id="hexGrid">
+        <li class="hex" ng-repeat="each in contact.items">
+          <a class="hexIn" ng-href='{{ each.url }}'>
+            <img ng-src="{{ each.icon }}" alt="" />
+          </a>
+        </li>
+      </ul>
 
-    <div class="clearfix"></div>
-    <div
-      class="btn-group pull-right"
-      role="group" aria-label="Basic example" >
-      <button type="button"
-        class="clear_msg btn btn btn-secondary"
-        ng-click="contact.clearMsg()">
-        Clear
-      </button>
-      <button type="button"
-        class="send_email btn btn-success"
-        ng-click="contact.sendEmail()">
-        Send
-      </button>
-    </div>
-  </section>
+      <section class="message">
+        <textarea
+          ng-model="contact.message"
+          placeholder="your message"
+          class="form-control">
+        </textarea>
 
-</div>
+        <div class="clearfix"></div>
+        <div
+          class="btn-group pull-right"
+          role="group" aria-label="Basic example" >
+          <button type="button"
+            class="clear_msg btn btn btn-secondary"
+            ng-click="contact.clearMsg()">
+            Clear
+          </button>
+          <button type="button"
+            class="send_email btn btn-success"
+            ng-click="contact.sendEmail()">
+            Send
+          </button>
+        </div>
+      </section>
+
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+</div><!-- /.container -->

@@ -33,23 +33,27 @@
       if ( $location.path() != '/' ) {
 
         // Strip the slash ("/about" ==> "about")
-        vm.activeBtn = $location.path().substr(1);
+        vm.activeBtn = $location.path().substr( 1 );
+
       }
 
       // Expose the public methods.
-      vm.goToLink  = ViewHelper.goToLink;
-      vm.setActive = function ( btnName ) { vm.activeBtn = btnName; }
+      vm.handleClick = handleClick;
       vm.isActive  = function ( btnName ) { return ( btnName == vm.activeBtn ); }
       vm.toggleSorter = function() { return vm.isSorterShown = ! vm.isSorterShown; };
-      vm.handleClick  = handleClick;
+
+
+      // ---
+      // PRIVATE METHODS
+      // ---
+
 
       /**
-       * Sets the specified button to active.
-       * Moves to the corresponding page.
+       * Sets the specified button to active and visits the corresponding page.
        */
       function handleClick( btnName ) {
-        vm.setActive( btnName );
-        vm.goToLink('/' + btnName );
+        vm.activeBtn = btnName;
+        ViewHelper.goToPath('/' + btnName );
       }
 
     } // end TopNavbarController

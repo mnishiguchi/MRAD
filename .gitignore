@@ -1,1 +1,4 @@
 .DS_Store
+
+# Secret files
+__secret*
