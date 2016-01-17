@@ -1,5 +1,5 @@
 # MRAD
-- I will attempt to make an imitation of [Mr. Mrad's beautiful portfolio](http://rachidmrad.com/) so that I can learn new techniques to design beautiful websites.
+I will attempt to make an imitation of [Mr. Mrad's beautiful portfolio](http://rachidmrad.com/) so that I can learn new techniques to design beautiful websites.
 
 ==
 
@@ -269,3 +269,28 @@ console.log( 'Current path: ' + $location.path() );
 ```
 
 ==
+
+## Dynamically setting a background URL
+```js
+<div ng-style="{ 'background-image': 'url({{ item.imgSrc }})' }">
+  some contents...
+</div>
+```
+
+==
+
+## Scrolling to the top upon route change
+- Simply add autoscroll property set to true
+- https://docs.angularjs.org/api/ngRoute/directive/ngView
+
+```html
+<ng-view autoscroll="true"></ng-view>
+```
+
+==
+
+## Forcing to reload the page
+
+```js
+$window.location.reload();
+```

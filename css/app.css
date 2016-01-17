@@ -28,7 +28,7 @@ body {
   color: #FFFFFF;
 }
 
-.page h1 {
+.page h1.masatoshi {
   font-family: 'Allura', cursive;
   padding-bottom: 10px;
 }
@@ -148,6 +148,12 @@ footer {
   Page contents
  */
 
+
 .page .contact .message {
-  margin-top: 20px;
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+}
+
+.page .contact .message textarea {
+  height: 100px;
 }

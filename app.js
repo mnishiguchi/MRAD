@@ -48,12 +48,12 @@
 
       $routeProvider
         .when('/', {
-          templateUrl: 'partials/_portfolio.html',
-          controller: 'PortfolioController as portfolio'
+          templateUrl: 'partials/_home.html',
+          controller: 'HomeController as home'
         })
-        .when('/project/:workId', {
-          templateUrl: 'partials/_project.html',
-          controller: 'ProjectController as project'
+        .when('/projects/:id', {
+          templateUrl: 'partials/_projects.html',
+          controller: 'ProjectsController as projects'
         })
         .when('/about', {
           templateUrl: 'partials/_about.html',
@@ -72,14 +72,16 @@
 
     run.$inject = [
       "$rootScope",
-      '$location',
-      '$routeParams'
+      '$location'
     ];
 
-    function run( $rootScope, $location, $routeParams ) {
+    function run( $rootScope, $location ) {
 
-      // $rootScope.$on('$routeChangeSuccess', function(e, current, pre) {
-      //   console.log('Current route name: ' + $location.path());
+      // $rootScope.$on(' $routeChangeSuccess', function( event, current, previous ) {
+      // });
+
+      // $rootScope.$on( '$locationChangeSuccess', function() {
+      //   $rootScope.$broadcast("app.locationChange", $location.path());
       // });
 
     } // end run
@@ -94,13 +96,13 @@
    */
   angular
     .module( 'app' )
-    .controller( 'PortfolioController', PortfolioController );
+    .controller( 'HomeController', HomeController );
 
-    PortfolioController.$inject = [
+    HomeController.$inject = [
       '$http'
     ];
 
-    function PortfolioController( $http ) {
+    function HomeController( $http ) {
 
       var vm = this;
 
@@ -108,7 +110,7 @@
       vm.items = [];
 
       // Load the portfolio data into vm.
-      vm.items = getPortfolioData();
+      vm.items = getData();
 
 
       // ---
@@ -117,92 +119,81 @@
 
 
       /**
-       * Fetches the data for the entire work and store it into vm.portfolio.
+       * Fetches the data for the entire work and store it into vm.items.
        */
-      function getPortfolioData() {
+      function getData() {
 
-        var stubList = [];
+        var itemList = [];
 
-        for ( var i = 0; i < 10; i++ ) {
-          stubList.push({
-            name: "item_" + i,
-            desc: "desc_" + i,
+        // First item is about myself.
+        itemList.push({
+          name: "Masatoshi Nishiguchi",
+          desc: "Web developer",
+          imgSrc: "https://s.gravatar.com/avatar/60515b6735ed4eeddbd1668f5fe9b5a0?s=500",
+          linkTo: "http://mnishiguchi.github.io/"
+        });
+
+        // Create placeholder items.
+        for ( var i = 1; i < 30; i++ ) {
+          itemList.push({
+            name: faker.lorem.sentence(),
+            desc: faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}'),
+            imgSrc: "http://placehold.it/300/09f/fff.png?text=" + i,
+            linkTo: "#/projects/" + i
           });
         }
 
-        return stubList;
+        return itemList;
 
-      } // end getPortfolioData
+      } // end getData
 
-    } // end PortfolioController
+    } // end HomeController
 
 
   /**
-   * Controls the projects.
+   * Controls the individual project pages.
    */
   angular
     .module( 'app' )
-    .controller( 'ProjectController', ProjectController );
+    .controller( 'ProjectsController', ProjectsController );
 
-    ProjectController.$inject = [
-      '$routeParams',
-      '$http'
+    ProjectsController.$inject = [
+      '$routeParams'
     ];
 
-    function ProjectController( $routeParams, $http ) {
+    function ProjectsController( $routeParams ) {
 
       var vm = this;
 
       // Initial state.
-      vm.work = [];
+      // vm.items = [];
 
-      // Get a list of work based on the workID passed in as a param.
-      vm.work = getWork();
+      // Get an entire list of projects from Portfolio service.
+      //vm.items = getData();
 
-
-      // ---
-      // PRIVATE METHODS
-      // ---
+      // Expose the public methods.
+      vm.item = getItem();
 
 
       /**
-       * Fetches the data for the work that is specified by the workId in the
-       * routeParams.
+       * @return an item that is specified by the id in the routeParams.
        */
-      function getWork() {
+      function getItem() {
+        // return vm.items[ $routeParams.id ];
 
-        // A stub list of the item lists.
-        var workLists = [
-          // [0]
-          [
-            {
-              name: "Ruby",
-              desc: "Ruby programming"
-            },
-            {
-              name: "JavaScript",
-              desc: "JS programming"
-            },
-          ],
-          // [1]
-          [
-            {
-              name: "Moving estimator",
-              desc: "An android app"
-            },
-            {
-              name: "Sample app",
-              desc: "A web app"
-            },
-          ],
+        // Generates a random fake item.
+        return {
+          name: faker.company.catchPhrase(),
+          desc: [ faker.commerce.productAdjective(), " ",
+                  faker.commerce.productMaterial(),  " ",
+                  faker.commerce.productName(),      ". ",
+                  faker.lorem.paragraphs(),
+                ].join("")
+          };
 
-        ]; // end workLists
+      } // end getData
 
-        return workLists[ $routeParams.workId ];
-
-      } // end getWork
-
-    } // end ProjectController
+    } // end ProjectsController
 
 
   // -------------------------------------------- //
@@ -223,53 +214,33 @@
 
     function ContactController() {
 
-      var vm = this;
-
       // Initial state.
-      vm.message = "";
-      vm.items = [
+      this.items = [
         {
-          name: "github",
-          url: "https://github.com/mnishiguchi",
-          icon: "img/ic-github-256.png"
+          name: "Github",
+          desc: "https://github.com/mnishiguchi",
+          linkTo: "https://github.com/mnishiguchi",
+          imgSrc: "img/ic-github-256.png"
         },
         {
-          name: "linkedin",
-          url: "https://www.linkedin.com/in/mnishiguchi",
-          icon: "img/ic-linkedin-256.png"
+          name: "LinkedIn",
+          desc: "https://www.linkedin.com/in/mnishiguchi",
+          linkTo: "https://www.linkedin.com/in/mnishiguchi",
+          imgSrc: "img/ic-linkedin-256.png"
         },
         {
-          name: "twitter",
-          url: "https://twitter.com/mnishiguchidc",
-          icon: "img/ic-twitter-256.png"
+          name: "Twitter",
+          desc: "https://twitter.com/mnishiguchidc",
+          linkTo: "https://twitter.com/mnishiguchidc",
+          imgSrc: "img/ic-twitter-256.png"
+        },
+        {
+          name: "Email",
+          desc: "masatoshi.nishiguchi@ude.edu",
+          linkTo: "mailto:masatoshi.nishiguchi@ude.edu",
+          imgSrc: "img/ic-email-256.png"
         },
       ]
-
-      // Expose the public methods.
-      vm.sendEmail = sendEmail;
-      vm.clearMsg  = clearMsg;
-
-
-      /**
-       * Opens the default email program with title, address and message prefilled.
-       */
-      function sendEmail() {
-
-        window.location.href = "mailto:nishiguchi.masa@gmail.com"
-          + "?cc=masatoshi.nishiguchi@udc.edu"
-          + "&subject=" + escape( "Hello, Masa!" )
-          + "&body=" + vm.message
-        ; // end window.location.href
-
-      }
-
-
-      /**
-       * Clear the text in the textarea.
-       */
-      function clearMsg() {
-        vm.message = "";
-      }
 
     } // end ContactController
 

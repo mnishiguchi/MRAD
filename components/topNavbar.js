@@ -1,3 +1,10 @@
+/**
+ * topNavbar
+ * ---
+ * Detects current path and sets the corresponding button to active.
+ * The btnNames are by convention, "home, "about" or "contact".
+ * The $location and ViewHelper services are required.
+ */
 (function () {
 
   angular
@@ -26,20 +33,17 @@
 
       // Initial state.
       vm.isSorterShown = false;
-      vm.activeBtn     = "home";
+      vm.activeBtn = ( $location.path() == '/about' || $location.path() == '/contact' )
+                   ? $location.path().substr( 1 )
+                   : "home" ;
 
-      // If the current path is not '/', set the appropreate button to active
-      // base on the path name.
-      if ( $location.path() != '/' ) {
-
-        // Strip the slash ("/about" ==> "about")
-        vm.activeBtn = $location.path().substr( 1 );
-
-      }
+      // If the current path is '/about' or '/contact', set the appropreate button
+      // to active base on the path name; otherwise, set home button to active.
+      // Strip the slash ("/about" ==> "about")
 
       // Expose the public methods.
       vm.handleClick = handleClick;
-      vm.isActive  = function ( btnName ) { return ( btnName == vm.activeBtn ); }
+      vm.isActive = function ( btnName ) { return ( btnName == vm.activeBtn ); }
       vm.toggleSorter = function() { return vm.isSorterShown = ! vm.isSorterShown; };
 
 
@@ -53,7 +57,7 @@
        */
       function handleClick( btnName ) {
         vm.activeBtn = btnName;
-        ViewHelper.goToPath('/' + btnName );
+        ViewHelper.goToPath( '/' + btnName );
       }
 
     } // end TopNavbarController

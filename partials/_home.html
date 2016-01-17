@@ -1,0 +1,35 @@
+<top-navbar></top-navbar>
+
+<div class="home">
+
+  <section class="hex-grid">
+
+    <div
+      ng-repeat="item in home.items"
+      class="grid-item repeat-animation">
+
+      <div class="inner">
+        <div
+          class="inner-inner"
+          ng-style="{ 'background-image': 'url({{ item.imgSrc }})' }">
+
+          <a
+            ng-href="{{ item.linkTo }}"
+            class="grid-info">
+
+            <div class ="inner-text">
+              <div class="inner-text-inner">
+
+                <h2>{{ item.name }}</h2>
+                <p>{{item.desc }}</p>
+
+              </div><!-- /.inner-text-inner -->
+            </div><!-- /.inner-text -->
+          </a><!-- /.grid-info -->
+        </div><!-- /.inner-inner -->
+      </div><!-- /.inner -->
+    </div><!-- /.grid-item -->
+  </section><!-- /.hex-grid -->
+
+</div>
+

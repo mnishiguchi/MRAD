@@ -1,12 +1,12 @@
 {
-  "name": "mrad_analysis",
+  "name": "MRAD",
   "version": "1.0.0",
-  "description": "",
+  "description": "I will attempt to make an imitation of [Mr. Mrad's beautiful portfolio](http://rachidmrad.com/) so that I can learn new techniques to design beautiful websites.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Masatoshi Nishiguchi",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.0-rc.0",
@@ -14,7 +14,13 @@
     "angular-route": "^1.5.0-rc.0",
     "bootstrap": "^4.0.0-alpha.2"
   },
-  "devDependencies": {
-    "jquery": "^2.2.0"
-  }
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnishiguchi/MRAD.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mnishiguchi/MRAD/issues"
+  },
+  "homepage": "https://github.com/mnishiguchi/MRAD"
 }

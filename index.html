@@ -20,18 +20,16 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <!-- Load custom styles -->
   <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/hexagon.css">
+  <link rel="stylesheet" href="css/hex-grid.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 
 
 <body>
-  <top-navbar></top-navbar>
-
   <div class="page">
 
     <!-- The partial view corresponding to the current path will be rendered here. -->
-    <ng-view></ng-view>
+    <ng-view autoscroll="true"></ng-view>
 
     <footer>
       <p>
@@ -40,16 +38,18 @@
           <br />
           This website is an imitation of my web design mentor Mr. Mrad's
           <a href="http://www.rachidmrad.com">beautiful portfolio</a>,
-          built with awesome open source projects such as AngularJS, Bootstrap and more .
+          built with awesome open source projects such as ,
+          <a href="https://angularjs.org/">AngularJS</a>,
+          <a href="https://v4-alpha.getbootstrap.com/">Bootstrap</a> and more.
         </small>
       </p>
     </footer>
 
-  </div><!-- /.container -->
+  </div><!-- /.page -->
 
 
-  <!-- Load jQuery -->
-  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- Load FakerJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.0.1/faker.min.js"></script>
   <!-- Load Angular -->
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="node_modules/angular-animate/angular-animate.min.js"></script>
