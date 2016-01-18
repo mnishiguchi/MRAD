@@ -1,9 +1,14 @@
 /**
  * topNavbar
- * ---
+ * --
  * Detects current path and sets the corresponding button to active.
  * The btnNames are by convention, "home, "about" or "contact".
  * The $location and ViewHelper services are required.
+ * --
+ * NOTE: It is ideal to put this component inside of the ngView so that we can
+ * switch nav-buttons correctly upon any route change. If it is placed
+ * outside of the ngView, for example when back button is pressed, it is not easy
+ * to set a correct button active.
  */
 (function () {
 

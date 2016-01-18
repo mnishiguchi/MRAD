@@ -18,6 +18,11 @@ body {
   background: #404142;
 }
 
+/* Add a bottom border to the last row that is missing by default */
+table tr:last-child {
+  border-bottom: 1px solid #FFFFFF;
+}
+
 .page {
   position: relative;
   width: 100%;

@@ -41,27 +41,29 @@
     .run( run );
 
     config.$inject = [
-      "$routeProvider"
+      '$routeProvider'
     ];
 
     function config( $routeProvider ) {
 
       $routeProvider
-        .when('/', {
-          templateUrl: 'partials/_home.html',
-          controller: 'HomeController as home'
+        .when( '/', {
+          templateUrl:  'partials/_home.html',
+          controllerAs: 'home',
+          controller:   'HomeController'
         })
-        .when('/projects/:id', {
-          templateUrl: 'partials/_projects.html',
-          controller: 'ProjectsController as projects'
+        .when( '/projects/:id', {
+          templateUrl:  'partials/_projects.html',
+          controllerAs: 'projects',
+          controller:   'ProjectsController'
         })
-        .when('/about', {
+        .when( '/about', {
           templateUrl: 'partials/_about.html',
-          controller: function() {}
         })
-        .when('/contact', {
-          templateUrl: 'partials/_contact.html',
-          controller: "ContactController as contact"
+        .when( '/contact', {
+          templateUrl:  'partials/_contact.html',
+          controllerAs: 'contact',
+          controller:   'ContactController'
         })
         .otherwise({
           redirectTo: '/'
@@ -70,18 +72,13 @@
     } // end config
 
 
-    run.$inject = [
-      "$rootScope",
-      '$location'
-    ];
+    run.$inject = [];
 
-    function run( $rootScope, $location ) {
+    function run() {
 
       // $rootScope.$on(' $routeChangeSuccess', function( event, current, previous ) {
       // });
-
       // $rootScope.$on( '$locationChangeSuccess', function() {
-      //   $rootScope.$broadcast("app.locationChange", $location.path());
       // });
 
     } // end run
@@ -92,60 +89,20 @@
 
 
   /**
-   * Controls the portpolio.
+   * Controls the home page.
    */
   angular
     .module( 'app' )
     .controller( 'HomeController', HomeController );
 
     HomeController.$inject = [
-      '$http'
+      'Portfolio'
     ];
 
-    function HomeController( $http ) {
+    function HomeController( Portfolio ) {
 
-      var vm = this;
-
-      // Initial state.
-      vm.items = [];
-
-      // Load the portfolio data into vm.
-      vm.items = getData();
-
-
-      // ---
-      // PRIVATE METHODS
-      // ---
-
-
-      /**
-       * Fetches the data for the entire work and store it into vm.items.
-       */
-      function getData() {
-
-        var itemList = [];
-
-        // First item is about myself.
-        itemList.push({
-          name: "Masatoshi Nishiguchi",
-          desc: "Web developer",
-          imgSrc: "https://s.gravatar.com/avatar/60515b6735ed4eeddbd1668f5fe9b5a0?s=500",
-          linkTo: "http://mnishiguchi.github.io/"
-        });
-
-        // Create placeholder items.
-        for ( var i = 1; i < 30; i++ ) {
-          itemList.push({
-            name: faker.lorem.sentence(),
-            desc: faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}'),
-            imgSrc: "http://placehold.it/300/09f/fff.png?text=" + i,
-            linkTo: "#/projects/" + i
-          });
-        }
-
-        return itemList;
-
-      } // end getData
+      // Load the portfolio data from the Portfolio service.
+      this.items = Portfolio.getData();
 
     } // end HomeController
 
@@ -158,40 +115,31 @@
     .controller( 'ProjectsController', ProjectsController );
 
     ProjectsController.$inject = [
-      '$routeParams'
+      '$routeParams',
+      'Portfolio'
     ];
 
-    function ProjectsController( $routeParams ) {
-
-      var vm = this;
+    function ProjectsController( $routeParams, Portfolio ) {
 
       // Initial state.
-      // vm.items = [];
+      this.item = getItem();
 
-      // Get an entire list of projects from Portfolio service.
-      //vm.items = getData();
 
-      // Expose the public methods.
-      vm.item = getItem();
+      // ---
+      // PRIVATE METHODS
+      // ---
 
 
       /**
-       * @return an item that is specified by the id in the routeParams.
+       * Returns the portfolio item that corresponds the current path.
        */
       function getItem() {
-        // return vm.items[ $routeParams.id ];
 
-        // Generates a random fake item.
-        return {
-          name: faker.company.catchPhrase(),
-          desc: [ faker.commerce.productAdjective(), " ",
-                  faker.commerce.productMaterial(),  " ",
-                  faker.commerce.productName(),      ". ",
-                  faker.lorem.paragraphs(),
-                ].join("")
-          };
+        var items = Portfolio.getData();
 
-      } // end getData
+        return items[ $routeParams.id ];
+
+      } // end getItem
 
     } // end ProjectsController
 
@@ -207,42 +155,137 @@
     .module( 'app' )
     .controller( 'ContactController', ContactController );
 
-    ContactController.$inject = [
-      '$routeParams',
-      '$http'
-    ];
+    ContactController.$inject = [];
 
     function ContactController() {
 
-      // Initial state.
       this.items = [
         {
-          name: "Github",
-          desc: "https://github.com/mnishiguchi",
-          linkTo: "https://github.com/mnishiguchi",
-          imgSrc: "img/ic-github-256.png"
+          name: 'Email',
+          desc: 'masatoshi.nishiguchi@udc.edu',
+          linkTo: 'mailto:masatoshi.nishiguchi@udc.edu',
+          imgSrc: 'img/email_200.png'
         },
         {
-          name: "LinkedIn",
-          desc: "https://www.linkedin.com/in/mnishiguchi",
-          linkTo: "https://www.linkedin.com/in/mnishiguchi",
-          imgSrc: "img/ic-linkedin-256.png"
+          name: 'Github',
+          desc: 'https://github.com/mnishiguchi',
+          linkTo: 'https://github.com/mnishiguchi',
+          imgSrc: 'img/github_200.png'
         },
         {
-          name: "Twitter",
-          desc: "https://twitter.com/mnishiguchidc",
-          linkTo: "https://twitter.com/mnishiguchidc",
-          imgSrc: "img/ic-twitter-256.png"
+          name: 'LinkedIn',
+          desc: 'https://www.linkedin.com/in/mnishiguchi',
+          linkTo: 'https://www.linkedin.com/in/mnishiguchi',
+          imgSrc: 'img/linkedin_200.png'
         },
         {
-          name: "Email",
-          desc: "masatoshi.nishiguchi@ude.edu",
-          linkTo: "mailto:masatoshi.nishiguchi@ude.edu",
-          imgSrc: "img/ic-email-256.png"
+          name: 'Facebook',
+          desc: 'https://www.facebook.com/mnishiguchidc',
+          linkTo: 'https://www.facebook.com/mnishiguchidc',
+          imgSrc: 'img/facebook_200.png'
         },
-      ]
+        {
+          name: 'Twitter',
+          desc: 'https://twitter.com/mnishiguchidc',
+          linkTo: 'https://twitter.com/mnishiguchidc',
+          imgSrc: 'img/twitter_200.png'
+        },
+        {
+          name: 'Phone',
+          desc: 'Don\'t click this',
+          linkTo: 'https://example.com',
+          imgSrc: 'img/phone_200.png'
+        }
+
+      ]; // end items
 
     } // end ContactController
+
+
+  // -------------------------------------------- //
+  // -------------------------------------------- //
+
+
+  /**
+   * Provides the data for the entire portfolio.
+   */
+  angular
+    .module( 'app' )
+    .factory( 'Portfolio', Portfolio );
+
+    Portfolio.$inject = [];
+
+    function Portfolio() {
+
+      // Stores the portfolio data.
+      var itemList = [];
+
+      // Returns the API.
+      return {
+        getData: getData
+      };
+
+
+      /**
+       * @return the entire portfolio data.
+       */
+      function getData() {
+
+        // Loads data only one time.
+        if ( itemList.length < 1 ) {
+          itemList = generateFakeData()
+        }
+
+        return itemList;
+
+      } // end getData
+
+
+      /**
+       * Generates and returns thirty fake items.
+       */
+      function generateFakeData() {
+
+        var itemList = [];
+
+        // First item is about myself.
+        itemList.push({
+
+          name:      'Masatoshi Nishiguchi',
+          descShort: 'Web developer',
+          descLong: [ faker.commerce.productAdjective(), ' ',
+                      faker.commerce.productMaterial(),  ' ',
+                      faker.commerce.productName(),      '. ',
+                      faker.lorem.paragraphs(),
+                    ].join(""),
+          imgSrc: 'https://s.gravatar.com/avatar/60515b6735ed4eeddbd1668f5fe9b5a0?s=500',
+          linkTo: 'http://mnishiguchi.github.io/'
+
+        });
+
+        // Create 29 placeholder items.
+        for ( var i = 1; i < 30; i++ ) {
+          itemList.push({
+
+            name:      faker.company.catchPhrase(),
+            descShort: faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}'),
+            descLong: [ faker.commerce.productAdjective(), ' ',
+                        faker.commerce.productMaterial(),  ' ',
+                        faker.commerce.productName(),      '. ',
+                        faker.lorem.paragraphs(),
+                      ].join(""),
+            imgSrc: 'http://placehold.it/300/09f/fff.png?text=' + i,
+            linkTo: '#/projects/' + i
+
+          });
+        }
+
+        return itemList;
+
+      } // end generateFakeData
+
+
+    } // end Portfolio
 
 
   // -------------------------------------------- //
@@ -254,19 +297,19 @@
     .factory( 'ViewHelper', ViewHelper );
 
     ViewHelper.$inject = [
-      "$location"
+      '$location'
     ];
 
     function ViewHelper( $location ) {
 
-      var service = {
-
-        goToPath: function( path ) { $location.path( path ); }
-
+      return {
+        goToPath: goToPath
       };
 
-      return service;
+      function goToPath( path ) {
+        $location.path( path );
+      }
 
-    }
+    } // end ViewHelper
 
 })(); // end module
