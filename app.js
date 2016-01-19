@@ -8,7 +8,8 @@
   angular
     .module( 'app', [
       'ngRoute',
-      'ngAnimate'
+      'ngAnimate',
+      'ngSanitize'
     ]);
 
 
@@ -155,9 +156,9 @@
     .module( 'app' )
     .controller( 'ContactController', ContactController );
 
-    ContactController.$inject = [];
+    ContactController.$inject = [ "$sce" ];
 
-    function ContactController() {
+    function ContactController($sce) {
 
       this.items = [
         {
@@ -178,23 +179,24 @@
           linkTo: 'https://www.linkedin.com/in/mnishiguchi',
           imgSrc: 'img/linkedin_200.png'
         },
+
         {
-          name: 'Facebook',
-          desc: 'https://www.facebook.com/mnishiguchidc',
-          linkTo: 'https://www.facebook.com/mnishiguchidc',
-          imgSrc: 'img/facebook_200.png'
+          name: 'Qiita',
+          desc: 'http://qiita.com/mnishiguchi',
+          linkTo: 'http://qiita.com/mnishiguchi',
+          imgSrc: 'img/search_200.png'
+        },
+        {
+          name: 'Stack Overflow',
+          desc: 'http://stackoverflow.com/<br>users/3837223/mnishiguchi',
+          linkTo: 'http://stackoverflow.com/users/3837223/mnishiguchi',
+          imgSrc: 'img/stackoverflow_200.png'
         },
         {
           name: 'Twitter',
           desc: 'https://twitter.com/mnishiguchidc',
           linkTo: 'https://twitter.com/mnishiguchidc',
           imgSrc: 'img/twitter_200.png'
-        },
-        {
-          name: 'Phone',
-          desc: 'Don\'t click this',
-          linkTo: 'https://example.com',
-          imgSrc: 'img/phone_200.png'
         }
 
       ]; // end items
