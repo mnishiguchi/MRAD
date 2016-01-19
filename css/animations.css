@@ -1,5 +1,5 @@
 /*
-  Defines keyframes for fading in page header text.
+  Defines a keyframe animation for fading in page header text.
   - name        : fadeIn
   - start state : { opacity: 0; }
   - end state   : { opacity: 1; }
@@ -8,7 +8,11 @@
    @-moz-keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+/*
+  Creates a CSS class that uses the fadeIn animation.
+ */
 .fade_in {
+
   /* Make elements invisible upon start */
   opacity:0;
 
@@ -22,11 +26,15 @@
      -moz-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 
+  /* Duration of each letter's fadeIn effect */
   -webkit-animation-duration: 1s;
      -moz-animation-duration: 1s;
           animation-duration: 1s;
 }
 
+/*
+  Sets delay time for each letter.
+*/
 .fade_in._1 {
   -webkit-animation-delay: .2s;
      -moz-animation-delay: .2s;
