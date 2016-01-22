@@ -1,9 +1,8 @@
 <top-navbar></top-navbar>
 
-<div class="contact">
+<div class="page_contact">
 
   <section class="hex-grid">
-
     <div
       ng-repeat="item in contact.items"
       class="grid-item repeat-animation">
@@ -30,36 +29,5 @@
       </div><!-- /.inner -->
     </div><!-- /.grid-item -->
   </section><!-- /.hex-grid -->
-
-
-<!--
-      <div class="row">
-        <div class="col-lg-3">
-          <section class="message">
-            <textarea
-              ng-model="contact.message"
-              placeholder="your message"
-              class="form-control">
-            </textarea>
-
-            <div class="clearfix"></div>
-            <div
-              class="btn-group pull-right"
-              role="group" aria-label="Basic example" >
-              <button type="button"
-                class="clear_msg btn btn btn-secondary"
-                ng-click="contact.clearMsg()">
-                Clear
-              </button>
-              <button type="button"
-                class="send_email btn btn-success"
-                ng-click="contact.sendEmail()">
-                Send
-              </button>
-            </div>
-          </section>
-        </div>
-      </div>
--->
 
 </div><!-- /.container -->

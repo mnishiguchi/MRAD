@@ -1,12 +1,9 @@
 <nav class="top_navbar navbar-fixed-top" role="navigation">
 
-  <div class="buttons_left" >
-    <!-- Left-hand side -->
-    <!-- href resets the view, orderProp resets the order -->
-    <!-- has to come after the select, otherwise the ngclick does not work -->
-    <!-- active by default -->
+  <section>
+
     <button
-      class="home parallelogram nav_button btn"
+      class="nav_home parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'home' )"
       ng-class="{ active: topNavbar.isActive( 'home' ) }">
 
@@ -38,7 +35,7 @@
       </div>
     </button>
     <button
-      class="about parallelogram nav_button btn"
+      class="nav_about parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'about' )"
       ng-class="{ active: topNavbar.isActive( 'about' ) }">
 
@@ -52,7 +49,7 @@
 
     </button>
     <button
-      class="contact parallelogram nav_button btn"
+      class="nav_contact parallelogram nav_button btn"
       ng-click="topNavbar.handleClick( 'contact' )"
       ng-class="{ active: topNavbar.isActive( 'contact' ) }">
 
@@ -81,23 +78,6 @@
 
     </button>
 
-  </div>
-
-  <!-- Portfolio sorting options -->
-  <div
-    class="sort_portfolio pull-right"
-    ng-show="topNavbar.isSortingListShown">
-
-    <select ng-model="orderProp" >
-
-      <option value="" selected>Show All<sup> *</sup></option>
-      <option value="latest">Latest</option>
-      <option value="websites">Websites</option>
-      <option value="mobileApps">Mobile apps</option>
-      <option value="experiments">Experiments</option>
-
-    </select>
-
-  </div>
+  </section>
 
 </nav><!-- /.top-navbar -->
